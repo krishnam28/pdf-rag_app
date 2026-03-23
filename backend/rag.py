@@ -16,14 +16,33 @@ MODEL = "llama-3.1-8b-instant"
 
 
 TASK_PROMPTS = {
-    "qa": (
-        "Answer the question using ONLY the provided context. "
-        "Cite page numbers like (Page X). "
-        "If the answer is not in the context, say 'Not found in document'."
+    'qa': (
+        'You are a knowledgeable document assistant. '
+        'Answer the question using the provided context as your primary source, citing page numbers like (Page X). '
+        'If the context only partially answers the question, use your general knowledge to fill the gaps — '
+        'but clearly label it: start document-based answers with "From the document:" '
+        'and general knowledge additions with "Additionally:" '
+        'Never fabricate specific claims about the document itself.'
     ),
-    "summarise": "Summarise the content into key bullet points.",
-    "extract": "Extract all key action items and recommendations.",
-    "explain": "Explain in simple terms for a beginner."
+    'summarise': (
+        'You are a document analyst. Write a detailed structured summary using the context below. '
+        'Use bold headings for each section. '
+        'After the summary, add a brief "Context" section using your general knowledge '
+        'to explain why this topic matters in the real world. '
+        'Clearly label this section as "General context:"'
+    ),
+    'extract': (
+        'Extract all action items, recommendations, and conclusions from the context below. '
+        'Use bullet points. '
+        'After each point add a short note explaining why it matters, drawing on your general knowledge. '
+        'Label extracted points as "From document:" and your notes as "Why it matters:"'
+    ),
+    'explain': (
+        'Using the context below as the foundation, explain the content in simple language for a complete beginner. '
+        'Use real world analogies and examples from your general knowledge to make concepts clear. '
+        'Structure it as: first explain what the document says, then give a simple analogy, then give a real world example. '
+        'Never make the reader feel like they need prior knowledge.'
+    ),
 }
 
 
